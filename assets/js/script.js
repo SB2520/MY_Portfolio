@@ -249,3 +249,22 @@ srtop.reveal('.experience .timeline .container', { interval: 400 });
 /* SCROLL CONTACT */
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
+
+
+
+
+function sendEmail(event) {
+    event.preventDefault();
+
+    const serviceID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
+    const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
+
+    emailjs.sendForm(serviceID, templateID, '#contact-form')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Your message has been sent!');
+      }, (error) => {
+        console.log('FAILED...', error);
+        alert('Failed to send your message. Please try again later.');
+      });
+  }
